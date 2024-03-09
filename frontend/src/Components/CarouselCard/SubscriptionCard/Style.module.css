@@ -112,7 +112,7 @@
 .item_wrap .wrapper .top .row4 button {
   width: 100%;
   padding: 10px 0;
-  background-color: linear-gradient(142deg, rgb(3, 116, 208) 10%, rgb(0, 239, 189) 100%);
+  background: linear-gradient(142deg, rgb(3, 116, 208) 10%, rgb(0, 239, 189) 100%);
   color: #fff;
   border: none;
   border-radius: 5px;
