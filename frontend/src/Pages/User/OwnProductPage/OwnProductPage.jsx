@@ -32,7 +32,12 @@ const OwnProductPage = () => {
         }
     };
 
-    //LoadCategory functions
+    // Function to toggle reload state
+    const reloadProducts = () => {
+        SetReload(prevState => !prevState);
+    };
+
+    //Load Product functions
     useEffect(() => {
         loadUserProducts();
     }, [Reload, User]);
@@ -64,7 +69,7 @@ const OwnProductPage = () => {
                         </div>
                         <div className={Style.cardWrapper}>
                             {UserProducts.map((product, index) => (
-                                <OwnCard product={product} />
+                                <OwnCard key={index} product={product} reloadProducts={reloadProducts} />
                             ))}
                         </div>
                     </div>
