@@ -134,6 +134,12 @@
     min-height: 100vh;
   }
 }
+@media (min-width: 550px) and (max-width: 768px) {
+  .container .form_wrapper {
+    width: 100vw;
+    box-shadow: none;
+  }
+}
 .container .form_wrapper .form_container {
   display: flex;
   height: 30rem;
@@ -156,6 +162,11 @@
   justify-content: center;
   border-top-left-radius: 7px;
   border-bottom-left-radius: 7px;
+}
+@media (min-width: 550px) and (max-width: 768px) {
+  .container .form_wrapper .form_container .left_section {
+    padding: 40px 60px;
+  }
 }
 .container .form_wrapper .form_container .left_section .login_Details h1 {
   padding-top: 10px;
@@ -289,6 +300,11 @@
   .container .form_wrapper .form_container .right_section {
     display: none;
     transition: 0.3s ease-all;
+  }
+}
+@media (min-width: 550px) and (max-width: 768px) {
+  .container .form_wrapper .form_container .right_section {
+    display: none;
   }
 }
 .container .form_wrapper .form_container .right_section .img_wrapper {
