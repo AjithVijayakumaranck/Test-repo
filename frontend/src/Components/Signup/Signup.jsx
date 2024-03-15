@@ -10,8 +10,6 @@ import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai"
 
 const Signup = ({ setLogin }) => {
 
-
-
   //authentication option
   const [otp, setOtp] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -354,11 +352,14 @@ const Signup = ({ setLogin }) => {
         </div>
       ) : (
         <div className={Style.left_section}>
+
           <div className={Style.login_Details}>
             <h1>Create Account</h1>
             <p>Please provide your details to register on DealNBuy</p>
           </div>
+
           <form onSubmit={(e) => { submitHandler(e); }} >
+
             <div className={Style.input_div}>
               <div>
                 <label htmlFor="Full_name">First Name</label>
@@ -369,7 +370,7 @@ const Signup = ({ setLogin }) => {
                   required
                   id="Full_name"
                 />
-                <p>{error.fullname}</p>
+                <p className={Style.error}>{error.fullname}</p>
               </div>
 
               <div>
@@ -381,9 +382,10 @@ const Signup = ({ setLogin }) => {
                   required
                   onChange={(e) => { lastname_validation(e); }}
                 />
-                <p>{error.lastname}</p>
+                <p className={Style.error}>{error.lastname}</p>
               </div>
             </div>
+
             <div className={Style.input_div}>
               <div>
                 <label htmlFor="DateofBirth">Date of birth</label>
@@ -395,7 +397,7 @@ const Signup = ({ setLogin }) => {
                   max={maxDate}
                   onChange={(e) => { dob_validation(e); }}
                 />
-                <p>{error.dateOfbirth}</p>
+                <p className={Style.error}>{error.dateOfbirth}</p>
               </div>
 
               <div>
@@ -410,9 +412,10 @@ const Signup = ({ setLogin }) => {
                   pattern="[0-9]*"
                   onChange={(e) => { phone_validation(e); }}
                 />
-                <p>{error.phonenumber}</p>
+                <p className={Style.error}>{error.phonenumber}</p>
               </div>
             </div>
+
             <div className={Style.input_div}>
               <div>
                 <label htmlFor="Email"> E-mail{" "} </label>
@@ -423,9 +426,10 @@ const Signup = ({ setLogin }) => {
                   id="Email"
                   onChange={(e) => { email_validation(e); }}
                 />
-                <p>{error.email}</p>
+                <p className={Style.error}>{error.email}</p>
               </div>
             </div>
+
             <div className={Style.input_div}>
               <div>
                 <label htmlFor="password">Password</label>
@@ -441,8 +445,9 @@ const Signup = ({ setLogin }) => {
                     {ShowPassword ? <AiOutlineEye /> : <AiOutlineEyeInvisible />}
                   </span>
                 </div>
-                <p>{error.password}</p>
+                <p className={Style.error}>{error.password}</p>
               </div>
+
               <div>
                 <label htmlFor="Confrim_Password">Confirm Password</label>
                 <div className={Style.input_Wrap}>
@@ -457,17 +462,28 @@ const Signup = ({ setLogin }) => {
                     {ShowConfirmPassword ? <AiOutlineEye /> : <AiOutlineEyeInvisible />}
                   </span>
                 </div>
-                <p>{error.confirmPassword}</p>
+                <p className={Style.error}>{error.confirmPassword}</p>
               </div>
             </div>
+
+            <div>
+              <p className={Style.terms}>I here by accept the
+                <Link to='/legal-and-privacy/terms&condition' className={Style.navigation} ><span >Terms Of Use</span></Link> and
+                <Link to='/legal-and-privacy' className={Style.navigation} ><span>Privacy Policy</span></Link>
+              </p>
+            </div>
+
             <button> {loading ? (<LoadingSpin size="20px" direction="alternate" width="4px" />) : ("Continue")} </button>
             <p className={Style.error_para}>{responseError}</p>
+
           </form>
+
           <div className={Style.additional_options}>
             <p> Already Have Account?
               <Link className={Style.navigation} onClick={() => { setLogin(false); }} > Login </Link>
             </p>
           </div>
+
         </div>
       )}
     </div>
