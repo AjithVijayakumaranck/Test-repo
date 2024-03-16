@@ -22,7 +22,17 @@ const Signup = ({ setLogin }) => {
   const [Timer, SetTimer] = useState(60);
   const [IsTimerRunning, SetIsTimerRunning] = useState(false);
 
-  const maxDate = new Date().toISOString().split("T")[0];
+  const [registrationDate] = useState(new Date()); // Assuming this is fetched or set somewhere
+  const [minDOB] = useState(() => {
+    const minDOBDate = new Date(registrationDate);
+    minDOBDate.setFullYear(minDOBDate.getFullYear() - 90);
+    return minDOBDate;
+  });
+  const [maxDOB] = useState(() => {
+    const maxDOBDate = new Date(registrationDate);
+    maxDOBDate.setFullYear(maxDOBDate.getFullYear() - 18);
+    return maxDOBDate;
+  });
 
   // Function to toggle password visibility
   const togglePasswordVisibility = () => {
@@ -389,13 +399,15 @@ const Signup = ({ setLogin }) => {
 
               <div className={Style.input_div}>
                 <div>
-                  <label htmlFor="DateofBirth">Date of birth</label>
+                  <label htmlFor="DateofBirth">Date of Birth</label>
                   <input
                     type="date"
                     required
                     placeholder="Date of birth"
                     id="DateofBirth"
-                    max={maxDate}
+                    className={Style.dobInput}
+                    max={maxDOB.toISOString().split('T')[0]}
+                    min={minDOB.toISOString().split('T')[0]}
                     onChange={(e) => { dob_validation(e); }}
                   />
                   <p className={Style.error}>{error.dateOfbirth}</p>
