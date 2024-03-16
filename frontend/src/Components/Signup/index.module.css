@@ -146,6 +146,15 @@
   padding: 14px 10px;
   background-color: #ebebeb;
 }
+.form_wrapper .form_container .left_section form .input_div div .dobInput {
+  width: 100%;
+  border-color: rgba(149, 149, 149, 0.52);
+  outline: none;
+  border-width: 0.3px;
+  border-radius: 5px;
+  padding: 13px 0;
+  background-color: #ebebeb;
+}
 .form_wrapper .form_container .left_section form .input_div div .input_Wrap {
   position: relative;
 }

@@ -523,12 +523,12 @@ const UpdateProfileForm = () => {
                                 </div>
                                 <div className={Style.notificationDiv}>
                                     <p>All your private informations are  for KYC purpose (Know Your Customer)
-                                        and  are safe with us" We won't share or sell it to third party!</p>
+                                        and  are safe with us We won't share or sell it to third party!</p>
                                 </div>
                                 <div className={Style.form_wrapper}>
                                     <div className={Style.flex_row}>
                                         <div className={Style.col}>
-                                            <label >FirstName <span>*</span></label>
+                                            <label >First Name <span>*</span></label>
                                             <InputForm
                                                 type="text"
                                                 placeholder='Fullname'
@@ -540,7 +540,7 @@ const UpdateProfileForm = () => {
                                             <p className={Style.error}>{Error.fullname}</p>
                                         </div>
                                         <div className={Style.col}>
-                                            <label >LastName <span>*</span></label>
+                                            <label >Last Name <span>*</span></label>
                                             <InputForm
                                                 type="text"
                                                 placeholder='Surname'
@@ -585,6 +585,7 @@ const UpdateProfileForm = () => {
                                                 placeholder='Date Of Birth'
                                                 id="Date Of Birth"
                                                 name="Date Of Birth"
+                                                className={Style.dobInput}
                                                 max={maxDOB.toISOString().split('T')[0]}
                                                 min={minDOB.toISOString().split('T')[0]}
                                                 value={UpdateProfile.dob}

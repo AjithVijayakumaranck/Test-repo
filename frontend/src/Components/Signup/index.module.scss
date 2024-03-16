@@ -165,10 +165,17 @@
                             border-radius: 5px;
                             padding: 14px 10px;
                             background-color: $base_color;
-
                         }
 
-
+                        .dobInput {
+                            width: 100%;
+                            border-color: rgb(149 149 149 / 52%);
+                            outline: none;
+                            border-width: .3px;
+                            border-radius: 5px;
+                            padding: 13px 0;
+                            background-color: $base_color;
+                        }
 
 
                         .input_Wrap {
