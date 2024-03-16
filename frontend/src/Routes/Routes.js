@@ -140,7 +140,7 @@ const Routings = () => {
                 <Route index element={<UserProfile />} />
                 <Route path="privacy-settings" element={<Settings />} />
               </Route>
-              <Route path='/updateprofile' element={<UpdateProfilePage />} />
+              <Route path='/update-profile' element={<UpdateProfilePage />} />
               <Route path='/wishlist' element={<WishlistPage />} />
               <Route path='/clientprofile/:clientId' element={< ClientProfile />} />
               <Route path='/subscribe' element={< PurchaseAd />} />
