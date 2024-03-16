@@ -19,7 +19,7 @@ const UserProfiles = ({ UserData, UserAddress }) => {
           <h2>Personal Information</h2>
         </div>
         <div className={Style.headerBtnDiv}>
-          <button onClick={() => navigate(`/updateprofile`)} > <span className={Style.icon}><FaEdit /></span>  Edit </button>
+          <button onClick={() => navigate(`/update-profile`)}> <span className={Style.icon}><FaEdit /></span>  Edit </button>
         </div>
       </div>
 
