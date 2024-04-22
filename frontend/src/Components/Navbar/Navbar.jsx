@@ -212,6 +212,7 @@ const Navbar = ({ location, setLocation, reload }) => {
         fontSize: '10px', // Adjust font size for smaller screens
       },
     }),
+    
     option: (provided, state) => ({
       ...provided,
       // borderBottom: '1px solid #ccc', // Example border for options
@@ -422,6 +423,13 @@ const Navbar = ({ location, setLocation, reload }) => {
                     <li className={Style.list_items} >
                       <BsCartPlus className={Style.icons} />
                       <span>My Ads</span>
+                    </li>
+                  </Link>
+
+                  <Link to="/myads" className={Style.navigation} >
+                    <li className={Style.list_items} >
+                      <BsCartPlus className={Style.icons} />
+                      <span>Post Advertisement</span>
                     </li>
                   </Link>
 
