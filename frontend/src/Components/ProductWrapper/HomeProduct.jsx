@@ -1,6 +1,7 @@
 import React from 'react'
 import Style from "./index.module.css"
 import ProductCard from '../Cards/ProductCard/ProductCard'
+import AddCard from '../Cards/AddCards/AddCards'
 
 
 
@@ -15,7 +16,13 @@ const HomeProduct = ({ title, sortedproducts }) => {
                     </div>
                 </div>
                 <div className={Style.cardWrapper}>
+                   
                     {sortedproducts.map((card, index) => {
+                        if(card.type === "advertisement"){
+                            return (
+                                <AddCard key = {index} properties={card}/>    
+                            )
+                        }
                         return (
                             <ProductCard key={index} product={card} />
                         )

@@ -1,4 +1,4 @@
-@import '../../StyleHelpers/Variables.scss';
+@import '../../../../StyleHelpers/Variables.scss';
 
 
 
@@ -13,6 +13,12 @@
     padding: 40px;
     overflow: hidden;
     gap: 10px;
+
+
+    *:required {
+        background-color: rgb(250, 250, 250);
+      }
+      
 
     @include breakpoint(md) {
         padding: 10px;
@@ -381,7 +387,7 @@
                 padding: 30px;
                 display: flex;
                 align-items: center;
-                justify-content: flex-end;
+                justify-content: center;
 
                 button {
                     position: absolute;
