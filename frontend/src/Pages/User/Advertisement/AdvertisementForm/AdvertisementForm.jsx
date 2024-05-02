@@ -9,6 +9,7 @@ import authInstance from '../../../../instance/AuthInstance';
 import { CategoryContext } from '../../../../Contexts/CategoryContext';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
+import LoadingSpin from "react-loading-spin";
 
 
 const AdvertisementForm = () => {
@@ -43,6 +44,7 @@ const AdvertisementForm = () => {
     const [Locality, SetLocality] = useState([])
     const [CatSelecter,SetCatSelecter] = useState([])
     const [SubCatSelecter,SetSubCatSelecter] = useState([])
+    const [loading, setLoading] = useState(false);
 
 
 
@@ -183,12 +185,14 @@ const AdvertisementForm = () => {
     data.append("advSize",ProductData.advSize)
 
     //api call
+    setLoading(true)
     authInstance.post('/api/user/advertisement/add_new_adv', data, {
         headers: { 'Content-Type': 'multipart/form-data' },
       }).then((response) => {
+      setLoading(false)
         toast.success("Product Added Successfully")
         Navigate('/')
-
+       
         SetProductData({
           title: "",
           description: "",
@@ -204,6 +208,7 @@ const AdvertisementForm = () => {
 
 
       }).catch((err) => {
+      setLoading(false)
         toast.error("Something Went Wrong")
       })
     
@@ -212,96 +217,110 @@ const AdvertisementForm = () => {
 
   return (
     <div className={Style.Main_Container}>
-      <div className={Style.Container_Wrapper}>  
-
-      <form action="#" onSubmit={handleSubmit}>
-        <div className={Style.row}>
-          <label> Title
-            <span className="star">*</span>{" "}
-          </label>
-          <div className={Style.items}>
-            <input
-              type="text"
-              name="title"
-              value={ProductData.title}
-              onChange={(e) => { SetProductData({ ...ProductData, title: e.target.value }) }}
-              required
-            />
-            <p> Mention the key features of item(eg. Brand, Model,Typeetc.) </p>
+      <div className={Style.Container_Wrapper}>
+        <form action="#" onSubmit={handleSubmit}>
+          <div className={Style.row}>
+            <label>
+              {" "}
+              Title
+              <span className="star">*</span>{" "}
+            </label>
+            <div className={Style.items}>
+              <input
+                type="text"
+                name="title"
+                value={ProductData.title}
+                onChange={(e) => {
+                  SetProductData({ ...ProductData, title: e.target.value });
+                }}
+                required
+              />
+              <p>
+                {" "}
+                Mention the key features of item(eg. Brand, Model,Typeetc.){" "}
+              </p>
+            </div>
           </div>
-        </div>
 
-
-        <div className={Style.row}>
-          <label> Redirection URL
-            <span className="star">*</span>{" "}
-          </label>
-          <div className={Style.items}>
-            <input
-              type="text"
-              name="title"
-              value={ProductData.redirectionUrl}
-             onChange={(e) => { SetProductData({ ...ProductData, redirectionUrl: e.target.value }) }}
-             required
-            />
-            <p> Mention the key features of item(eg. Brand, Model,Typeetc.) </p>
+          <div className={Style.row}>
+            <label>
+              {" "}
+              Redirection URL
+              <span className="star">*</span>{" "}
+            </label>
+            <div className={Style.items}>
+              <input
+                type="text"
+                name="title"
+                value={ProductData.redirectionUrl}
+                onChange={(e) => {
+                  SetProductData({
+                    ...ProductData,
+                    redirectionUrl: e.target.value,
+                  });
+                }}
+                required
+              />
+              <p>
+                {" "}
+                Mention the key features of item(eg. Brand, Model,Typeetc.){" "}
+              </p>
+            </div>
           </div>
-        </div>
 
-        <div className={Style.row}>
-          <label>
-            Advertisement Size
-          </label>
-          <div >
-            <Select
-              options={options}
-              name="Advertisement Size"
-              onChange={(e) => { SetProductData({ ...ProductData, advSize: e.value }) }}
-              required
-            />
+          <div className={Style.row}>
+            <label>Advertisement Size</label>
+            <div>
+              <Select
+                options={options}
+                name="Advertisement Size"
+                onChange={(e) => {
+                  SetProductData({ ...ProductData, advSize: e.value });
+                }}
+                required
+              />
+            </div>
           </div>
-        </div>
 
-        <div className={Style.row} >
-          <label>
-            Category
-          </label>
-          <div >
-            <Select
-              options={CatSelecter}
-              name="Category"
-              onChange={catSelector}
-              required
-            />
+          <div className={Style.row}>
+            <label>Category</label>
+            <div>
+              <Select
+                options={CatSelecter}
+                name="Category"
+                onChange={catSelector}
+                required
+              />
+            </div>
           </div>
-        </div>
 
-      {
-        ProductData.category == "" ? null :   <div className={Style.row}>
-        <label>
-          subcategory
-        </label>
-        <div >
-          <Select
-            options={SubCatSelecter}
-            name="SubCategory"
-            onChange={(e) => {SetProductData({ ...ProductData, subCategory: e.value })    }}
-            required
-          />
-        </div>
-      </div>
-      }
+          {ProductData.category == "" ? null : (
+            <div className={Style.row}>
+              <label>subcategory</label>
+              <div>
+                <Select
+                  options={SubCatSelecter}
+                  name="SubCategory"
+                  onChange={(e) => {
+                    SetProductData({ ...ProductData, subCategory: e.value });
+                  }}
+                  required
+                />
+              </div>
+            </div>
+          )}
 
-        
+          {/* image uploading */}
 
-        {/* image uploading */}
-
-        <div className={Style.row} >
+          <div className={Style.row}>
             <label>
               Images <span className="star">*</span>{" "}
             </label>
             <div className={Style.image_wrapper}>
-              <label For="file-input">  {" "}  <MdOutlineAddAPhoto />  </label>
+              <label For="file-input">
+                {" "}
+                <MdOutlineAddAPhoto />{" "}
+              </label>
 
               <input
                 type="file"
@@ -313,101 +332,122 @@ const AdvertisementForm = () => {
               {/* image viewers */}
               {File.map((eachImage, index) => {
                 return (
-                  <div key={index} 
-                  className={Style.image_sec}
-                  >
-                    <img src={eachImage
-                      ? URL.createObjectURL(eachImage)
-                      : null
-                    }
+                  <div key={index} className={Style.image_sec}>
+                    <img
+                      src={eachImage ? URL.createObjectURL(eachImage) : null}
                       alt={`image ${index}`}
                     />
 
-                    <div 
-                    className={Style.clearbtn}
-                    >
-                      <button> {" "} <RxCross2 onClick={() => { SetFile([]) }} />{" "} </button>
+                    <div className={Style.clearbtn}>
+                      <button>
+                        {" "}
+                        <RxCross2
+                          onClick={() => {
+                            SetFile([]);
+                          }}
+                        />{" "}
+                      </button>
                     </div>
                   </div>
                 );
               })}
             </div>
             <div>
-              <span style={{ color: 'red', fontSize: '14px' }}>{Error?.imgfile}</span>
+              <span style={{ color: "red", fontSize: "14px" }}>
+                {Error?.imgfile}
+              </span>
             </div>
             <div>
               <p>
-                You can only upload up to one image.
-                Choose multiple photos by choosing your best photo first as displayed in front and then add rest of photos with
-                different angles to shows specifications or damages if any.
+                You can only upload up to one image. Choose multiple photos by
+                choosing your best photo first as displayed in front and then
+                add rest of photos with different angles to shows specifications
+                or damages if any.
               </p>
             </div>
           </div>
 
-
           <div className={Style.row}>
-                <label> Country <span className="star">*</span>{" "}  </label>
-                <Select
-                  options={[{value:"india",label:"india"}]}
-                  onChange={(e) => { SetProductData({ ...ProductData, region: e.value }) }}
-                />
-                <span>{Error.country}</span>
-              </div>
-          
-          <div 
-          className={Style.location_wrap}
-          >
+            <label>
+              {" "}
+              Country <span className="star">*</span>{" "}
+            </label>
+            <Select
+              options={[{ value: "india", label: "india" }]}
+              onChange={(e) => {
+                SetProductData({ ...ProductData, region: e.value });
+              }}
+            />
+            <span>{Error.country}</span>
+          </div>
+
+          <div className={Style.location_wrap}>
+            <div className={Style.row}>
+              <label>
+                {" "}
+                State <span className="star">*</span>{" "}
+              </label>
+              <Select
+                options={StateOptions}
+                isSearchable={true}
+                onChange={(e) => {
+                  SetProductData({ ...ProductData, state: e.label });
+                  SetStateId(e.value);
+                }}
+              />
+              <span>{Error.state}</span>
+            </div>
+
+            {District && District.length > 0 && (
               <div className={Style.row}>
-                <label> State <span className="star">*</span>{" "}  </label>
+                <label>
+                  {" "}
+                  District <span className="star">*</span>{" "}
+                </label>
                 <Select
-                  options={StateOptions}
-                  isSearchable={true}
+                  options={DistrictOptions}
                   onChange={(e) => {
-                    SetProductData({ ...ProductData, state: e.label });
-                    SetStateId(e.value)
+                    SetProductData({ ...ProductData, district: e.label });
+                    SetDistrictId(e.label);
+                    SetIsLocalityDisabled(false);
                   }}
                 />
-                <span>{Error.state}</span>
+                <span>{Error.district}</span>
               </div>
+            )}
+          </div>
 
-              {District && District.length > 0 && (
-                <div className={Style.row}>
-                  <label> District <span className="star">*</span>{" "}  </label>
-                  <Select
-                    options={DistrictOptions}
-                    onChange={(e) => {
-                      SetProductData({ ...ProductData, district: e.label })
-                      SetDistrictId(e.label)
-                      SetIsLocalityDisabled(false)
-                    }}
-                  />
-                  <span>{Error.district}</span>
-                </div>
+          <div className={Style.location_wrap}>
+            {Locality && Locality.length > 0 && (
+              <div className={Style.row}>
+                <label>
+                  {" "}
+                  Locality <span className="star">*</span>{" "}
+                </label>
+                <Select
+                  options={LocalityOptions}
+                  isDisabled={IsLocalityDisabled}
+                  onChange={(e) => {
+                    SetProductData({ ...ProductData, locality: e.value });
+                  }}
+                />
+                <span>{Error.locality}</span>
+              </div>
+            )}
+          </div>
+          <div className={Style.submit_section}>
+            <button>
+              {loading ? (
+                <LoadingSpin size="20px" direction="alternate" width="4px" />
+              ) : (
+                "Add Advertisement"
               )}
-            </div>
-
-            <div className={Style.location_wrap}>
-
-              {Locality && Locality.length > 0 && (
-                <div className={Style.row}>
-                  <label> Locality <span className="star">*</span>{" "}  </label>
-                  <Select
-                    options={LocalityOptions}
-                    isDisabled={IsLocalityDisabled}
-                    onChange={(e) => { SetProductData({ ...ProductData, locality: e.value }) }}
-                  />
-                  <span>{Error.locality}</span>
-                </div>
-              )}
-
-            </div>
-           <div className={Style.submit_section}>
-           <button  >Post advertisement</button>
-           </div>
-      </form>
+            </button>
+          </div>
+        </form>
       </div>
     </div>
-  )
+  );
 }
 
 export default AdvertisementForm
