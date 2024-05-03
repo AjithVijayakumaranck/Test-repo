@@ -170,9 +170,12 @@ const Navbar = ({ location, setLocation, reload }) => {
   }, [User?._id, reload])
 
   // -- Function for nagivation to category page
-  const HandleCategoryClick = (categoryId) => {
-    navigate(`/category/${categoryId}`);
-  }
+  
+   const HandleCategoryClick = (categoryId) => {
+     navigate(`/category/${categoryId}`);
+   };
+
+ 
 
   // -- Assigning react-select options
   const SelectOptions = Categories.map((category) => ({
