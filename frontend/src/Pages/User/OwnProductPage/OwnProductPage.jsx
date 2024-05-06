@@ -71,13 +71,12 @@ const OwnProductPage = () => {
             <div className={Style.cardWrapper}>
               {UserProducts.map((product, index) => {
                 if (product.type === "advertisement") {
-                  return <AddCard key={index} properties={product} className={Style.add_card}/>;
+                  return <AddCard key={index} properties={product} />
                 }
                 return (
                   <OwnCard
                     key={index}
                     product={product}
-                    className={Style.own_add}
                     reloadProducts={reloadProducts}
                   />
                 );
