@@ -50,7 +50,7 @@ const CategoryProductPage = () => {
           return prevCat;
           });
 
-          SetFilters(response.data?.filters);
+          SetFilters(response.data?.filters);  
         })
         .catch((error) => {
           console.log(error);

@@ -1,84 +1,86 @@
-@import '../../../StyleHelpers/Variables.scss';
+@import "../../../StyleHelpers/Variables.scss";
 
 .page_wrapper {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    min-height: 100%;
+  width:100%;
+  min-width: 100%;
+  display: flex;
 
-    .main {
-        margin-top: 80px;
-        display: flex;
-        flex-direction: column;
+  .main {
+    margin-top: 80px;
+    display: flex;
+    flex-direction:column;
+
+    @include breakpoint(md) {
+      margin-top: 120px;
+    }
+
+    @include mediumScreen {
+      margin-top: 120px;
+    }
+
+    @include LargeScreen {
+      margin-top: 80px;
+    }
+
+    .productwrapper {
+      padding: 1.5rem 0;
+      min-height: 35rem;
+      background-color: #f8f8f8;
+
+      .container {
+        margin: 0 4rem;
+        display: block;
+        padding: 0 20px;
+        width:100%;
+        min-width: 100%;
 
         @include breakpoint(md) {
-            margin-top: 120px;
+          margin: 0 0;
+          padding: 0 20px;
         }
 
         @include mediumScreen {
-            margin-top: 120px;
+          margin: 0 1rem;
         }
 
-        @include LargeScreen {
-            margin-top: 80px;
+        .heading {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          margin-bottom: 2rem;
+          padding: 0.5rem 0;
+          border-bottom: 2px solid $base_color;
         }
 
+        .cardWrapper {
+          overflow: hidden;
+          display: flex;
+          flex-direction: row;
+          flex-wrap: wrap;
+          gap: 10px;
+          
+         
 
-        .productwrapper {
-            padding: 1.5rem 0;
-            min-height: 35rem;
-            background-color: #f8f8f8;
+          @include breakpoint(md) {
+            grid-template-columns: 1fr 1fr;
+            gap: 5px;
+          }
 
-            .container {
-                margin: 0 4rem;
-                display: block;
-                padding: 0 20px;
+          @include mediumScreen {
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 5px;
+          }
 
-                @include breakpoint(md) {
-                    margin: 0 0;
-                    padding: 0 20px;
-                }
+          @include extraMediumScreen {
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+          }
 
-                @include mediumScreen {
-                    margin: 0 1rem;
-                }
-
-                .heading {
-                    display: flex;
-                    align-items: center;
-                    justify-content: space-between;
-                    margin-bottom: 2rem;
-                    padding: .5rem 0;
-                    border-bottom: 2px solid $base_color;
-                }
-
-                .cardWrapper {
-                    display: grid;
-                    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-                    place-items: center;
-                    place-content: center;
-                    gap: 20px;
-
-
-                    @include breakpoint(md) {
-                        grid-template-columns: 1fr 1fr;
-                        gap: 10px 20px;
-                    }
-
-                    @include mediumScreen {
-                        grid-template-columns: 1fr 1fr 1fr;
-                    }
-
-                    @include extraMediumScreen {
-                        grid-template-columns: 1fr 1fr 1fr 1fr;
-                    }
-
-                    @include LargeScreen {
-                        grid-template-columns: 1fr 1fr 1fr;
-                    }
-                }
-            }
+          @include LargeScreen {
+            grid-template-columns: 1fr 1fr 1fr;
+          }
         }
-
+       
+      }
     }
+  }
 }
