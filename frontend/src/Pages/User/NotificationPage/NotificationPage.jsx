@@ -7,7 +7,9 @@ import Footer from '../../../Components/Footer/Footer';
 import NotificationCard from '../../../Components/Cards/NotificationCard/NotificationCard';
 import { UserContext } from '../../../Contexts/UserContext';
 import authInstance from '../../../instance/AuthInstance';
-
+import NotificationModal from '../../../Components/Notification_Modal/Modal'
+import Backlogo from "../../../Assets/Icons/Back"
+import Logo from '../../../Assets/Images/logo.webp'
 
 const NotificationPage = () => {
 
@@ -16,6 +18,7 @@ const NotificationPage = () => {
 
     const [Reload, SetReload] = useState(false);
     const [Alert, SetAlert] = useState([]);
+    const [isOpen,SetIsOpen] = useState(false)
 
     const location = useLocation();
     const pathSegment = location.pathname.split('/').filter((segment) => segment);
@@ -52,38 +55,75 @@ const NotificationPage = () => {
         })
     };
 
+const openModal =()=>{
+SetIsOpen(true)
+};
+
+ const closeModal = () => {
+   SetIsOpen(false);
+ };
+
+ console.log(alert,"not data")
 
     return (
-        <div className={Style.page_wrapper}>
-            <ScrollToTopOnMount />
-            <Navbar reload={Reload} />
-            <div className={Style.main}>
-                <Breadcrumb pathSegments={pathSegment} />
-                <div className={Style.productwrapper}>
-                    <div className={Style.container}>
-                        <div className={Style.heading}>
-                            <div className={Style.left}>
-                                <h2>Notification</h2>
-                            </div>
-                            <div className={Style.right}>
-                                <span></span>
-                            </div>
-                        </div>
-                        {Alert.length !== 0 ?
-                            <div className={Style.cardWrapper}>
-                                <NotificationCard HandleRead={handleRead} Alert={Alert} User={User} />
-                            </div>
-                            :
-                            <div className={Style.imgWrapper}>
-                                <img src="/Images/message.svg" alt="" />
-                            </div>
-                        }
-                    </div>
+      <div className={Style.page_wrapper}>
+        <ScrollToTopOnMount />
+        <Navbar reload={Reload} />
+        <div className={Style.main}>
+          <Breadcrumb pathSegments={pathSegment} />
+          <div className={Style.productwrapper}>
+            <div className={Style.container}>
+              <div className={Style.heading}>
+                <div className={Style.left}>
+                  <h2>Notification</h2>
                 </div>
-                <Footer />
+                <div className={Style.right}>
+                  <span></span>
+                </div>
+              </div>
+              {Alert.length !== 0 ? (
+                <div className={Style.cardWrapper} onClick={openModal}>
+                  <NotificationCard
+                    HandleRead={handleRead}
+                    Alert={Alert}
+                    User={User}
+                  />
+                </div>
+              ) : (
+                <div className={Style.imgWrapper}>
+                  <img src="/Images/message.svg" alt="" />
+                </div>
+              )}
             </div>
+          </div>
+          <NotificationModal isOpen={isOpen} onClose={closeModal}>
+          <div className={Style.modal_wrapper}>
+            <div className={Style.closeIcon_wrapper} onClick={closeModal}>
+              <Backlogo />
+            </div>
+            {Alert.map((alert, index) => {
+              
+                  return (
+              
+                      <div className={Style.modal_container} key={index}>
+                        <div className={Style.left_container}>
+                            <img src={Logo} alt="notification logo" />
+                        </div>
+                        <div className={Style.right_container}>
+                          <h6>{alert?.notification}</h6>
+                          <p>Notification message</p>
+                        </div>
+                      </div>
+                   
+                  );
+              })}
+          </div>
+          </NotificationModal>
+
+          <Footer />
         </div>
-    )
+      </div>
+    );
 }
 
 export default NotificationPage
