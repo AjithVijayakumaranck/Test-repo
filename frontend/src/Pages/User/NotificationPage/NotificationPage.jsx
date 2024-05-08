@@ -10,6 +10,7 @@ import authInstance from '../../../instance/AuthInstance';
 import NotificationModal from '../../../Components/Notification_Modal/Modal'
 import Backlogo from "../../../Assets/Icons/Back"
 import Logo from '../../../Assets/Images/logo.webp'
+import TimeAgo from "react-timeago";
 
 const NotificationPage = () => {
 
@@ -97,27 +98,27 @@ SetIsOpen(true)
             </div>
           </div>
           <NotificationModal isOpen={isOpen} onClose={closeModal}>
-          <div className={Style.modal_wrapper}>
-            <div className={Style.closeIcon_wrapper} onClick={closeModal}>
-              <Backlogo />
-            </div>
-            {Alert.map((alert, index) => {
+            <div className={Style.modal_wrapper}>
+              <div className={Style.closeIcon_wrapper} onClick={closeModal}>
+                <Backlogo />
+              </div>
               
-                  return (
-              
-                      <div className={Style.modal_container} key={index}>
-                        <div className={Style.left_container}>
-                            <img src={Logo} alt="notification logo" />
-                        </div>
-                        <div className={Style.right_container}>
-                          <h6>{alert?.notification}</h6>
-                          <p>Notification message</p>
-                        </div>
+              {Alert.map((alert, index) => {
+                return (
+                  <div className={Style.modal_container} key={index}>
+                    <div className={Style.left_container}>
+                      <div className={Style.modal_img}>
+                        <img src={Logo} alt="notification logo" />
                       </div>
-                   
-                  );
+                    </div>
+                    <div className={Style.right_container}>
+                      <h6>{alert?.notification}</h6>
+                      <p>Notification message</p>
+                    </div>
+                  </div>
+                );
               })}
-          </div>
+            </div>
           </NotificationModal>
 
           <Footer />

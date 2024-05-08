@@ -112,7 +112,11 @@
           max-width: 200px;
           overflow: hidden;
           object-fit: contain;
-        
+
+         .modal_img{
+           width: 200px;
+           height: 250px;
+          }
         }
 
         .right_container {
@@ -123,7 +127,7 @@
         .item {
           margin-bottom: 20px;
         }
-
+  
         .right_container h6 {
           margin-bottom: 10px;
         }
@@ -134,4 +138,6 @@
       }
     }
   }
+
+   
 }

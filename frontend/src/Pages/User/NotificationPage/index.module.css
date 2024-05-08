@@ -95,6 +95,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 10px;
 }
 .page_wrapper .main .productwrapper .container .left_container {
   margin-right: 20px;
@@ -102,6 +103,10 @@
   overflow: hidden;
   -o-object-fit: contain;
      object-fit: contain;
+}
+.page_wrapper .main .productwrapper .container .left_container .modal_img {
+  width: 200px;
+  height: 250px;
 }
 .page_wrapper .main .productwrapper .container .right_container {
   display: flex;
