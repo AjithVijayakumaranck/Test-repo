@@ -67,12 +67,7 @@
             @include breakpoint(md) {
                 grid-template-columns: 1fr 1fr;
                 gap: 5px;
-                .add_card{
-                  display: flex;
-                  justify-content:center ;
-                align-items: center;
-                margin:0px auto;
-                }
+            
             }
 
             @include mediumScreen {

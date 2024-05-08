@@ -64,12 +64,6 @@
     grid-template-columns: 1fr 1fr;
     gap: 5px;
   }
-  .page_wrapper .main .productwrapper .container .cardWrapper .add_card {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0px auto;
-  }
 }
 @media (min-width: 550px) and (max-width: 768px) {
   .page_wrapper .main .productwrapper .container .cardWrapper {

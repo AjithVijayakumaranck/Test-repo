@@ -85,34 +85,29 @@
   padding: 20px;
   width: 400px;
 }
-.page_wrapper .main .productwrapper .container .closeIcon_wrapper {
+.page_wrapper .main .productwrapper .container .modal_wrapper .closeIcon_wrapper {
   position: absolute;
   top: 10px;
   right: 10px;
   cursor: pointer;
 }
-.page_wrapper .main .productwrapper .container .modal_container {
+
+.modal_container {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 10px;
 }
-.page_wrapper .main .productwrapper .container .left_container {
+.modal_container .left_container {
   margin-right: 20px;
   max-width: 200px;
   overflow: hidden;
-  -o-object-fit: contain;
-     object-fit: contain;
 }
-.page_wrapper .main .productwrapper .container .right_container {
+.modal_container .left_container img {
+  width: 15rem;
+  height: 12rem;
+}
+.modal_container .right_container {
   display: flex;
   flex-direction: column;
-}
-.page_wrapper .main .productwrapper .container .item {
-  margin-bottom: 20px;
-}
-.page_wrapper .main .productwrapper .container .right_container h6 {
-  margin-bottom: 10px;
-}
-.page_wrapper .main .productwrapper .container .right_container p {
-  margin: 0;
 }/*# sourceMappingURL=index.module.css.map */
