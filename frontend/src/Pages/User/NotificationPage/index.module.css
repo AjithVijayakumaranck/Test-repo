@@ -83,12 +83,8 @@
   border-radius: 10px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
   padding: 20px;
-  width: 400px;
+  width: 300px;
   padding: 20px;
-}
-.page_wrapper .main .productwrapper .container .modal_wrapper .closeIcon_wrapper {
-  cursor: pointer;
-  position: absolute;
 }
 
 .modal_container {
@@ -98,6 +94,16 @@
   gap: 10px;
   position: relative;
   padding: 25px;
+}
+.modal_container .closeIcon_wrapper {
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 0;
+  max-width: 50px;
+}
+.modal_container .closeIcon_wrapper .back_logo {
+  padding: 10px;
 }
 .modal_container .left_container {
   margin-right: 20px;
@@ -118,4 +124,10 @@
   right: 5px;
   color: blue;
   font-size: 12px;
+}
+@media only screen and (max-width: 768px) {
+  .modal_container {
+    width: 340px;
+    margin: 0 auto;
+  }
 }/*# sourceMappingURL=index.module.css.map */
