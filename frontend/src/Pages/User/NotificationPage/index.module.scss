@@ -91,53 +91,45 @@
           box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
           padding: 20px;
           width: 400px;
-        }
+          padding: 20px;
 
-        .closeIcon_wrapper {
-          position: absolute;
-          top: 10px;
-          right: 10px;
-          cursor: pointer;
-        }
-
-        .modal_container {
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          gap:10px;
-        }
-
-        .left_container {
-          margin-right: 20px;
-          max-width: 200px;
-          overflow: hidden;
-          object-fit: contain;
-
-         .modal_img{
-           width: 200px;
-           height: 250px;
+          .closeIcon_wrapper {
+            cursor: pointer;
+            position: absolute;
           }
-        }
-
-        .right_container {
-          display: flex;
-          flex-direction: column;
-        }
-
-        .item {
-          margin-bottom: 20px;
-        }
-  
-        .right_container h6 {
-          margin-bottom: 10px;
-        }
-
-        .right_container p {
-          margin: 0;
         }
       }
     }
   }
+}
 
-   
+.modal_container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  position: relative;
+  padding: 25px;
+
+  .left_container {
+    margin-right: 20px;
+    max-width: 200px;
+    overflow: hidden;
+
+    img {
+      width: 15rem;
+      height: 12rem;
+    }
+  }
+  .right_container {
+    display: flex;
+    flex-direction: column;
+  }
+  .time_shower {
+    position: absolute;
+    bottom: 4px;
+    right: 5px;
+    color: blue;
+    font-size: 12px;
+  }
 }

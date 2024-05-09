@@ -57,11 +57,13 @@ const NotificationPage = () => {
     };
 
 const openModal =()=>{
-SetIsOpen(true)
+SetIsOpen(true);
+document.body.style.overflow = 'hidden';
 };
 
  const closeModal = () => {
    SetIsOpen(false);
+   document.body.style.overflow = 'auto';
  };
 
  console.log(alert,"not data")
@@ -114,6 +116,7 @@ SetIsOpen(true)
                     <div className={Style.right_container}>
                       <h6>{alert?.notification}</h6>
                       <p>Notification message</p>
+                       <span className={Style.time_shower}> <TimeAgo date={alert?.createdAt} minPeriod={60} /> </span>
                     </div>
                   </div>
                 );
